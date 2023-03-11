@@ -5,12 +5,8 @@ common = []
 count = 0
 last = []
 
-for i in range(len(strs)):
-    if len(strs[i]) < len(first):
-        min = len(strs[i])
-
 for i in strs:
-    for j in range(min):
+    for j in range(len(i)):
         common.append(i[j])
    
 for i in common:     
@@ -20,8 +16,4 @@ for i in common:
 last = set(last)
 lastl = []
 
-for i in last:
-    lastl.append(i)
-    
-print(lastl)
-    
+print(last)
