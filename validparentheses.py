@@ -1,28 +1,27 @@
-def gek(s):
-    values = {
-            "(" : 1,
-            ")" : -1,
-            "{" : 2,
-            "}" : -2,
-            "[" : -3,
-            "]" : 3
-        }
-
-    result = 0
-    same = 0
-
-    for i in range(len(s)):
-        result += values[s[i]]
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
     
-    for i in range(0, len(s), 2):
-        if i+1 < len(s) and values[s[i]] + values[s[i+1]] == 0:
-            same += 1
-        
-    
-    if result == 0 and same == len(s) / 2:
-        return True
-
-    else:
-        return False
-    
-print(gek("{[]}"))
+        for p in s:
+            if p == "(" or p == "[" or p == "{":
+                stack.append(p)
+            else:
+                if len(stack) == 0:
+                    return False
+                else:
+                    current = stack.pop()
+                    if p == ")" and current != "(":
+                        return False
+                    if p == "]" and current != "[":
+                        return False
+                    if p == "}" and current != "{":
+                        return False
+                    
+        if len(stack) == 0:
+                return True
+        else:
+                return False
