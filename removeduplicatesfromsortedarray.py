@@ -2,10 +2,12 @@ from collections import Counter
 
 def sirala(nums):
     variable = nums[0]
-    unique = [variable]
+    unique = []
     piece = 1
 
     for i in range(len(nums)):
+        if i == 0:
+            unique.append(nums[i])
         if nums[i] != variable:
             piece += 1
             variable = nums[i]
@@ -13,7 +15,7 @@ def sirala(nums):
 
     return unique
 
-print(sirala([0,0,0,1,2,2,2,3,4]))
+print(sirala([1,1,2]))
 """
 from collections import Counter
 
